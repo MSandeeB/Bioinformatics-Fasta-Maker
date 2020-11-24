@@ -33,7 +33,7 @@ header = input("File header: ")
 def spidroinFile(filename, header):
   #try is not needed but helps make the code run smoothly even with errors
   try: 
-    #adds .fasta at the end of the chosen file name
+    #creating a .fasta file with the user input name
     with open(filename + ".fasta", "w") as fasta_handle: 
       #adds the user input header into the file
       fasta_handle.write(">Gene info " + header + "\n")
