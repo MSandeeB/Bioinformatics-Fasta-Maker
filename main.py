@@ -1,8 +1,8 @@
 import random
-#import packages
+#import io package
 import io 
 def dnagenerator():
-  #makes individual letters into seperate strings
+  #makes individual nucleotides into seperate strings
   nucleotideslist = list("AGCT") 
   subrepeata = ''
   #randomly chooses a number from 1-150
@@ -20,22 +20,24 @@ def dnagenerator():
       subrepeatb += random.choice(nucleotideslist) 
   #print(subrepeatb)
   subset1 = subrepeata + subrepeatb
-  #prints full sequence
+  #prints full sequence with two repeating subsets
   return(subset1 * 2)
-#assigns function to a variable
+#assigns the dna function to a variable
 generator = dnagenerator() 
 
+#assigns variable to user inputs for the file name and header
 filename = input("File name is: ")
 header = input("File header: ")
-#user inputs
-#function to create fasta file
+
+#function to create fasta file of the created dna sequence
 def spidroinFile(filename, header):
   #try is not needed but helps make the code run smoothly even with errors
   try: 
+    #adds .fasta at the end of the chosen file name
     with open(filename + ".fasta", "w") as fasta_handle: 
-      #adds header into the file
+      #adds the user input header into the file
       fasta_handle.write(">Gene info " + header + "\n")
-      #adds the generated DNA sequence
+      #adds the generated DNA sequence within the file
       fasta_handle.write(generator)
   #detects error in the function
   except IOError as err: 
